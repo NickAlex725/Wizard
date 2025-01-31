@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 555202927012080922}
   - component: {fileID: 7328581067786113667}
   - component: {fileID: 250674314335693736}
+  - component: {fileID: 4664517986618116195}
   m_Layer: 0
   m_Name: Black_Spades09
   m_TagString: Untagged
@@ -101,3 +102,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardValue: 9
   _cardType: Spade
+--- !u!65 &4664517986618116195
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267759670141397443}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.6960616, y: 0.00000017695129, z: 8.872102}
+  m_Center: {x: 0, y: -9.313226e-10, z: 0}

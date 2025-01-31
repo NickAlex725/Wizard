@@ -8,13 +8,12 @@ public abstract class State
     public virtual void Enter()
     {
         StateDuration = 0;
-        Debug.Log("Now enetering a state");
     }
 
     //run once state is ended
     public virtual void Exit()
     {
-        Debug.Log("Now exiting a state");
+        
     }
 
     //for physics

@@ -15,11 +15,13 @@ public class EndOfTurnState : State
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("winner is: " + _manager.GetWinningCard());
     }
 
     public override void Exit()
     {
         base.Exit();
+        _manager.IncreaseTurnNumber();
     }
 
     public override void FixedTick()

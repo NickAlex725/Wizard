@@ -1,20 +1,33 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Mono.Cecil.Cil;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private List<Card> _drawDeck;
     [SerializeField] private Player[] _players;
 
+    private List<Card> _playedCards;
     private int _turnNumber = 1;
     private Card _trumpCard;
     private Card _leadingSuit;
+    private Card _currentWinner;
 
     public void SetUpTurn()
     {
         ShuffleCards();
         DealCards(_turnNumber);
         DetermineTrumpCard();
+    }
+
+    public void IncreaseTurnNumber()
+    {
+        _turnNumber++;
+    }
+
+    public Player GetPlayer(int playerNumber)
+    {
+        return _players[playerNumber-1];
     }
 
     private void ShuffleCards()
@@ -60,5 +73,55 @@ public class GameManager : MonoBehaviour
             _trumpCard = null;
             return;
         }
+    }
+
+    public void CheckForCurrentWinner(Card playedCard)
+    {
+        if(_currentWinner != null)
+        {
+            //player has played a trump card, check to see if its the first one
+            if(playedCard.GetCardType() == _trumpCard.GetCardType() && _currentWinner.GetCardType() != _trumpCard.GetCardType())
+            {
+                _currentWinner = playedCard;
+            }
+            //played has played a trump card and current winner is a trump card, check for higher value
+            else if(playedCard.GetCardType() == _trumpCard.GetCardType() && _currentWinner.GetCardType() == _trumpCard.GetCardType())
+            {
+                //played card has a high value trump card and is current winner
+                if(playedCard.GetCardValue() > _currentWinner.GetCardValue())
+                {
+                    _currentWinner = playedCard;
+                }
+            }
+            //no trump card has been played check for higher value
+            else if(playedCard.GetCardType() != _trumpCard.GetCardType() && _currentWinner.GetCardType() != _trumpCard.GetCardType())
+            {
+                //played card has a high value trump card and is current winner
+                if (playedCard.GetCardValue() > _currentWinner.GetCardValue())
+                {
+                    _currentWinner = playedCard;
+                }
+            }
+        }
+        else
+        {
+            //first card has been played and is the current winner
+            _currentWinner = playedCard;
+        }
+    }
+
+    public Card GetWinningCard()
+    {
+        for (int i = 0; i < _players.Length; i++)
+        {
+            //check if wizard is play and make them winner
+            if( _players[i].GetCardPlayed().GetCardType() == "Wizard")
+            {
+                return _players[i].GetCardPlayed();
+            }
+            CheckForCurrentWinner(_players[i].GetCardPlayed());
+        }
+
+        return _currentWinner;
     }
 }

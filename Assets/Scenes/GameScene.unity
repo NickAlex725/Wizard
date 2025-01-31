@@ -488,6 +488,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _centerOfHand: {fileID: 583033702}
   _cardsInHand: []
+  _isAI: 0
+  _manager: {fileID: 1571697546}
 --- !u!4 &261120952
 Transform:
   m_ObjectHideFlags: 0
@@ -963,13 +965,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743517919}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -2.4, y: -1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2029824937}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,6 +1126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6477bda86ca5b42a15e8e7db77ac35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _manager: {fileID: 0}
 --- !u!4 &1507616412
 Transform:
   m_ObjectHideFlags: 0
@@ -1154,6 +1157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _centerOfHand: {fileID: 1073501871}
   _cardsInHand: []
+  _isAI: 1
+  _manager: {fileID: 1571697546}
 --- !u!1 &1537620623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,8 +1234,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _drawDeck:
+  - {fileID: 689089287501341689, guid: f5ce3f588332f9c428dd2030c670c354, type: 3}
+  - {fileID: 2961985123842830970, guid: 41ebaa16de55fb94796b2f224d355e5d, type: 3}
   - {fileID: 4814942732238731376, guid: 276e3c43b2f00574ba4acc5301c5f0a2, type: 3}
   - {fileID: 5132238927410595076, guid: 858d4e5019244e940b1a5570cb672667, type: 3}
+  - {fileID: 1818268374880951744, guid: 1d8fbcba47dddfa438bf3f017790da95, type: 3}
   - {fileID: 4396860831568788236, guid: 8df7ff930946abd44b741bc61997da20, type: 3}
   - {fileID: 4733124044977876183, guid: 52e04040a9b40f043a77537651047ad2, type: 3}
   - {fileID: 6968450402755741276, guid: a138dfe0da32de94492d38daee73258d, type: 3}
@@ -1238,14 +1246,11 @@ MonoBehaviour:
   - {fileID: 5851823151127197269, guid: c313a832b2aa94f44b2b254466bbf4cf, type: 3}
   - {fileID: 1275452512230533079, guid: e988a49aba53cd247a1bca3e16468191, type: 3}
   - {fileID: 5834283991561884009, guid: b2688b5916f750b49900135017f9551b, type: 3}
-  - {fileID: 689089287501341689, guid: f5ce3f588332f9c428dd2030c670c354, type: 3}
   - {fileID: 6878606849435831607, guid: 606825231f9a22c45b60334adfe93200, type: 3}
   - {fileID: 2193743349017740473, guid: 815a5dd0b7758d44a8be8823776d2190, type: 3}
   - {fileID: 5785678613252343865, guid: 699e03acebc4a1b4fb5f3d3a7f35c4e8, type: 3}
-  - {fileID: 2961985123842830970, guid: 41ebaa16de55fb94796b2f224d355e5d, type: 3}
   - {fileID: 1356174091636173883, guid: 939b2bf2dfbab8145aeceecf76456678, type: 3}
   - {fileID: 1416879645507134845, guid: 7b1e48fd4b60fa34bb8bfa996968ea86, type: 3}
-  - {fileID: 1818268374880951744, guid: 1d8fbcba47dddfa438bf3f017790da95, type: 3}
   - {fileID: 4103494173116715485, guid: d2a13836ca239a94faac6582e8b066b1, type: 3}
   - {fileID: 5680056132361937954, guid: 677003759308e50429eee142f09b93f3, type: 3}
   - {fileID: 8475428867916220380, guid: 867eafdf13ba0054eb3cf30673cc57ab, type: 3}
@@ -1255,6 +1260,7 @@ MonoBehaviour:
   - {fileID: 7194341794786159800, guid: 4625ff95f91359f49bbdf021e0adcc7b, type: 3}
   - {fileID: 2481245356100114276, guid: 6e2bc755e72e24b409caa9d8deb83027, type: 3}
   - {fileID: 5243748335733280502, guid: b81c1baa8c7f8394b95fdfc14970960e, type: 3}
+  - {fileID: 4912874657520068888, guid: 0c8119cdd5c4b234185ce43eee4f90cf, type: 3}
   - {fileID: 6804154492265794309, guid: e372b9dded4199243bd5514cfafbe9d6, type: 3}
   - {fileID: 4038601176653617373, guid: 7969589f3a06f974a9247f6e9e5b8c89, type: 3}
   - {fileID: 6468491375677411530, guid: 961afdbc1d2cb164d8b94d7a3f624e3e, type: 3}
@@ -1285,7 +1291,6 @@ MonoBehaviour:
   - {fileID: 1263344320224445850, guid: ad49fb361e046c841b47699a208fbcbf, type: 3}
   - {fileID: 1263344320224445850, guid: ad49fb361e046c841b47699a208fbcbf, type: 3}
   - {fileID: 1263344320224445850, guid: ad49fb361e046c841b47699a208fbcbf, type: 3}
-  - {fileID: 4912874657520068888, guid: 0c8119cdd5c4b234185ce43eee4f90cf, type: 3}
   - {fileID: 4912874657520068888, guid: 0c8119cdd5c4b234185ce43eee4f90cf, type: 3}
   - {fileID: 4912874657520068888, guid: 0c8119cdd5c4b234185ce43eee4f90cf, type: 3}
   - {fileID: 4912874657520068888, guid: 0c8119cdd5c4b234185ce43eee4f90cf, type: 3}
@@ -1457,6 +1462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6477bda86ca5b42a15e8e7db77ac35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _manager: {fileID: 0}
 --- !u!4 &1859347836
 Transform:
   m_ObjectHideFlags: 0
@@ -1487,6 +1493,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _centerOfHand: {fileID: 154004851}
   _cardsInHand: []
+  _isAI: 1
+  _manager: {fileID: 1571697546}
 --- !u!1 &1931855878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,6 +1633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6477bda86ca5b42a15e8e7db77ac35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _manager: {fileID: 0}
 --- !u!4 &2029824937
 Transform:
   m_ObjectHideFlags: 0
@@ -1655,6 +1664,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _centerOfHand: {fileID: 743517920}
   _cardsInHand: []
+  _isAI: 1
+  _manager: {fileID: 1571697546}
 --- !u!1 &2112813624
 GameObject:
   m_ObjectHideFlags: 0

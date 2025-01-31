@@ -6,13 +6,22 @@ public class Card : MonoBehaviour
     [SerializeField] private int _cardValue;
     [SerializeField] private string _cardType;
 
+    public Card(int cardValue, string cardType)
+    {
+        _cardValue = cardValue;
+        _cardType = cardType;
+    }
+
+    public void SetValues(int cardValue, string cardType)
+    {
+        _cardValue = cardValue;
+        _cardType = cardType;
+    }
+
     public void PlayCard()
     {
         Debug.Log("Playing card with a value of " +  _cardValue +
              " and a type of " + _cardType);
-        // remove card from players hand
-        // animate card to the middle of the table
-
     }
 
     public void HoverOverCard()
@@ -20,12 +29,12 @@ public class Card : MonoBehaviour
         //animate the card being lidted to show that you're hovering over it
     }
 
-    public string GetCardType(Card card)
+    public string GetCardType()
     {
         return _cardType;
     }
 
-    public int GetCardValue(Card card)
+    public int GetCardValue()
     {
         return _cardValue;
     }

@@ -26,6 +26,7 @@ public class TurnSetUpState : State
     public override void FixedTick()
     {
         base.FixedTick();
+        _stateMachine.ChangeState(_stateMachine.Player1State);
     }
 
     public override void Tick()
